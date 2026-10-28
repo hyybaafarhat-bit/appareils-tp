@@ -1,0 +1,36 @@
+<div class="container mt-4 mb-5">
+  <div class="row justify-content-center">
+    <div class="col-md-5 col-lg-4">
+      <div class="card border-0 shadow-sm rounded-4">
+        <div class="card-body p-5">
+          <div class="text-center mb-4">
+            <h2 class="fw-bold mb-2">Connexion</h2>
+            <p class="text-muted small">Accédez à votre espace</p>
+          </div>
+
+          <form (ngSubmit)="onLogin()">
+            <div class="mb-3">
+              <label class="form-label fw-semibold small text-muted">Email</label>
+              <input type="email" class="form-control border-0 bg-light py-3"
+                     placeholder="nom@exemple.com" [(ngModel)]="email" name="email" required>
+            </div>
+
+            <div class="mb-4">
+              <label class="form-label fw-semibold small text-muted">Mot de passe</label>
+              <input type="password" class="form-control border-0 bg-light py-3"
+                     placeholder="••••••••" [(ngModel)]="password" name="password" required>
+            </div>
+
+            <button type="submit" class="btn btn-dark w-100 py-3 rounded-3 fw-semibold">
+              Se connecter
+            </button>
+          </form>
+
+          <p class="text-center mt-4 mb-0 text-muted">
+            <small>Démo - non fonctionnelle</small>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

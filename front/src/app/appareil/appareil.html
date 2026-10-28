@@ -1,0 +1,42 @@
+<li class="mb-3">
+  <div class="card border-0 shadow-sm rounded-4">
+    <div class="card-body d-flex align-items-center gap-3 p-3">
+      
+      <!-- Indicateur de statut -->
+      <div class="rounded-circle p-2 d-flex align-items-center justify-content-center"
+           [class.bg-success]="appareilStatus() === 'On'"
+           [class.bg-danger]="appareilStatus() === 'Off'"
+           style="width: 40px; height: 40px; opacity: 0.8;">
+        <span class="text-white fs-5">
+          {{ appareilStatus() === 'On' ? '⚡' : '💤' }}
+        </span>
+      </div>
+
+     
+
+      <!-- Nom et Statut -->
+      <div class="flex-grow-1">
+        <h6 class="mb-0 fw-bold">{{ appareilName() }}</h6>
+        <small class="text-muted">
+          Statut : <span [class.text-success]="appareilStatus() === 'On'" [class.text-danger]="appareilStatus() === 'Off'" class="fw-bold">{{ appareilStatus() }}</span>
+        </small>
+      </div>
+
+      <!-- Boutons d'action -->
+      <div class="d-flex gap-2">
+        <a class="btn btn-sm btn-outline-secondary rounded-pill px-3" [routerLink]="['/appareils', appareilId()]">
+          Détails
+        </a>
+        <button class="btn btn-sm btn-outline-dark rounded-pill px-3" (click)="switchOn.emit(appareilId())">
+          Allumer
+        </button>
+        <button class="btn btn-sm btn-outline-dark rounded-pill px-3" (click)="switchOff.emit(appareilId())">
+          Éteindre
+        </button>
+        <button class="btn btn-sm btn-outline-danger rounded-pill px-3" (click)="delete.emit(appareilId())">
+          Supprimer
+        </button>
+      </div>
+    </div>
+  </div>
+</li>

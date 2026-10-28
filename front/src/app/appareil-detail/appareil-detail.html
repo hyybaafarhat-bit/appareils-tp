@@ -1,0 +1,40 @@
+<div class="container mt-4 mb-5">
+  <a routerLink="/appareils" class="btn btn-light rounded-pill mb-4 text-secondary shadow-sm">
+    ← Retour
+  </a>
+
+  @if (error()) {
+    <div class="alert alert-danger rounded-3">{{ error() }}</div>
+  } @else if (appareil()) {
+    <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
+      <div class="card-header bg-white border-0 py-4 px-4">
+        <h2 class="fw-bold mb-0">{{ appareil()!.name }}</h2>
+      </div>
+      <div class="card-body p-4">
+        <div class="row g-4">
+          <div class="col-md-6">
+            <div class="p-3 bg-light rounded-3">
+              <small class="text-muted text-uppercase fw-bold d-block mb-2">Statut actuel</small>
+              <span class="fs-4 fw-bold"
+                [class.text-success]="appareil()!.status === 'On'"
+                [class.text-danger]="appareil()!.status === 'Off'">
+                {{ appareil()!.status === 'On' ? '⚡ Allumé' : '💤 Éteint' }}
+              </span>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="p-3 bg-light rounded-3">
+              <small class="text-muted text-uppercase fw-bold d-block mb-2">Identifiant unique</small>
+              <code class="text-dark">{{ appareil()!._id }}</code>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  } @else {
+    <div class="text-center p-5">
+      <div class="spinner-border text-dark" role="status"></div>
+      <p class="mt-3 text-muted">Chargement des détails...</p>
+    </div>
+  }
+</div>

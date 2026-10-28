@@ -1,0 +1,55 @@
+<div class="container mt-4 mb-5">
+  <!-- En-tête avec le titre et le compteur -->
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h2 class="fw-bold mb-0">Mes Appareils</h2>
+    <span class="badge bg-dark rounded-pill px-3 py-2">{{ appareilList().length }} appareil(s)</span>
+  </div>
+
+  <!-- Le filtre -->
+  <div class="d-flex gap-2 mb-4">
+    <select class="form-select w-auto shadow-sm border-0" (change)="onFilterChange($event)">
+      <option value="">Tous les statuts</option>
+      <option value="On">Allumés</option>
+      <option value="Off">Éteints</option>
+    </select>
+  </div>
+
+  <!-- Affichage des erreurs -->
+  @if (error()) {
+    <div class="alert alert-danger rounded-3">{{ error() }}</div>
+  }
+
+  <!-- Formulaire d'ajout -->
+  <div class="card border-0 shadow-sm rounded-4 mb-4">
+    <div class="card-body p-3">
+      <div class="input-group">
+        <input 
+          type="text" 
+          class="form-control form-control-lg border-0 bg-light" 
+          placeholder="Nom du nouvel appareil..." 
+          #newName />
+        <button class="btn btn-dark px-4" (click)="onAddAppareil(newName.value); newName.value=''">
+          + Ajouter
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- La liste des appareils -->
+  <ul class="list-unstyled">
+    @for (a of appareilList(); track a._id) {
+      <app-appareil
+        [appareilId]="a._id"
+        [appareilName]="a.name"
+        [appareilStatus]="a.status"
+        (switchOn)="onSwitchOn($event)"
+        (switchOff)="onSwitchOff($event)"
+        (delete)="onDelete($event)" />
+    } @empty {
+      <div class="text-center p-5 bg-white shadow-sm rounded-4 text-muted">
+        <div class="display-4 mb-3">📭</div>
+        <p class="mb-0">Aucun appareil pour le moment.</p>
+      </div>
+    }
+  </ul>
+</div>

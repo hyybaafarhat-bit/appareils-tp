@@ -1,0 +1,26 @@
+<nav class="navbar navbar-expand navbar-light bg-white shadow-sm mb-4 sticky-top">
+  <div class="container">
+    <a class="navbar-brand fw-bold text-dark d-flex align-items-center gap-2" routerLink="/home">
+      <span class="fs-4">🏠</span> Appareils
+    </a>
+
+    <ul class="navbar-nav ms-auto align-items-center">
+      <li class="nav-item">
+        <a class="nav-link text-secondary fw-medium" routerLink="/home" routerLinkActive="text-dark fw-bold">Accueil</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-secondary fw-medium" routerLink="/appareils" routerLinkActive="text-dark fw-bold">Appareils</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-secondary fw-medium" routerLink="/contact" routerLinkActive="text-dark fw-bold">Contact</a>
+      </li>
+      <li class="nav-item ms-3">
+        <a class="btn btn-dark rounded-pill px-4 fw-semibold" routerLink="/login" routerLinkActive="active">
+          Connexion
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<router-outlet />
